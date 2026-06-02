@@ -1,0 +1,21 @@
+{
+  "name": "Mushaf — Quran Progress Tracker",
+  "short_name": "Mushaf",
+  "description": "Track your daily Quran reading, build streaks, set completion goals, and unlock milestones with a clean modern Islamic interface.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#faf7f0",
+  "theme_color": "#1a5d3f",
+  "lang": "en",
+  "categories": ["lifestyle", "education", "productivity"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

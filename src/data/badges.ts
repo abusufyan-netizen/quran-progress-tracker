@@ -1,0 +1,15 @@
+export const badges = [
+  { id: "first-page", name: "First Page", description: "Read your first page of the Quran", icon: "book-open", unlockMessage: "Bismillah! A great journey begins." },
+  { id: "100-pages", name: "100 Pages", description: "Read 100 pages of the Quran", icon: "book", unlockMessage: "100 pages down, mashallah!" },
+  { id: "halfway", name: "Halfway There", description: "Reach page 302", icon: "star", unlockMessage: "You are halfway through the Quran!" },
+  { id: "khatm", name: "Khatm", description: "Complete the entire Quran", icon: "award", unlockMessage: "Congratulations on completing the Quran!" },
+  { id: "10-surahs", name: "10 Surahs", description: "Complete 10 Surahs", icon: "check-circle", unlockMessage: "10 Surahs completed!" },
+  { id: "30-surahs", name: "30 Surahs", description: "Complete 30 Surahs", icon: "check-circle", unlockMessage: "30 Surahs completed!" },
+  { id: "all-surahs", name: "All Surahs", description: "Complete all 114 Surahs", icon: "check-square", unlockMessage: "You've read every Surah!" },
+  { id: "1-juz", name: "1 Juz", description: "Complete 1 Juz", icon: "bookmark", unlockMessage: "First Juz completed!" },
+  { id: "10-juz", name: "10 Juz", description: "Complete 10 Juz", icon: "bookmark", unlockMessage: "10 Juz completed!" },
+  { id: "all-juz", name: "All 30 Juz", description: "Complete all 30 Juz", icon: "bookmark", unlockMessage: "All 30 Juz completed!" },
+  { id: "7-day-streak", name: "7 Day Streak", description: "Read for 7 consecutive days", icon: "flame", unlockMessage: "A full week of reading!" },
+  { id: "30-day-streak", name: "30 Day Streak", description: "Read for 30 consecutive days", icon: "flame", unlockMessage: "A full month of reading!" },
+  { id: "100-day-streak", name: "100 Day Streak", description: "Read for 100 consecutive days", icon: "flame", unlockMessage: "100 days of dedication!" },
+];
