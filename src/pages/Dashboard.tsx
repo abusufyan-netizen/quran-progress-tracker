@@ -10,7 +10,7 @@ import { badges } from "@/data/badges";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export default function Dashboard() {
   useDocumentMeta({
@@ -25,7 +25,7 @@ export default function Dashboard() {
     .slice(-3)
     .reverse();
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 12, scale: 0.98 },
     visible: { 
       opacity: 1, 
