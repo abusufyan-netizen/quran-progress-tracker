@@ -100,19 +100,24 @@ export default function Surahs() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-20">
         <AnimatePresence>
-          {filteredSurahs.map((surah) => {
+          {filteredSurahs.map((surah, index) => {
             const completed = isSurahCompleted(surah);
             const progress = getSurahProgress(surah);
             
             return (
               <motion.div 
                 layout
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ 
+                  duration: 0.3,
+                  ease: [0.23, 1, 0.32, 1],
+                  delay: index < 12 ? index * 0.04 : 0 
+                }}
                 key={surah.number}
               >
-                <Card className={`overflow-hidden transition-all hover:shadow-md hover:border-primary/40 cursor-pointer ${completed ? 'border-primary/30 bg-primary/5' : ''}`}>
+                <Card className={`overflow-hidden transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 hover:border-primary/40 cursor-pointer ${completed ? 'border-primary/30 bg-primary/5' : ''}`}>
                   <CardContent className="p-4">
                     <div className="flex items-center gap-4">
                       <div onClick={(e) => e.stopPropagation()}>

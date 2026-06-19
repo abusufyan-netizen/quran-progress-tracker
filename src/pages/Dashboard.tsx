@@ -10,6 +10,7 @@ import { badges } from "@/data/badges";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
+import { motion } from "framer-motion";
 
 export default function Dashboard() {
   useDocumentMeta({
@@ -24,11 +25,30 @@ export default function Dashboard() {
     .slice(-3)
     .reverse();
 
+  const itemVariants = {
+    hidden: { opacity: 0, y: 12, scale: 0.98 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] } 
+    }
+  };
+
   return (
-    <div className="space-y-6 md:space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <motion.div 
+      initial="hidden"
+      animate="visible"
+      variants={{
+        visible: {
+          transition: { staggerChildren: 0.08 }
+        }
+      }}
+      className="space-y-6 md:space-y-8"
+    >
       
       {/* Hero Row */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="flex flex-col items-center justify-center p-6 bg-gradient-to-br from-primary/5 to-background border-primary/10">
           <ProgressRing value={progressPercent} size={160} />
           <p className="mt-4 text-sm font-medium text-muted-foreground">{totalPagesRead} / 604 pages read</p>
@@ -39,11 +59,12 @@ export default function Dashboard() {
           <StatCard title="Read Today" value={todayPagesRead} subtitle="pages" icon={Calendar} />
           <StatCard title="Total Read" value={totalPagesRead} subtitle="pages" icon={BookOpen} />
         </div>
-      </div>
+      </motion.div>
 
       {goal && (
-        <Card className="bg-accent/10 border-accent/20">
-          <CardContent className="p-4 flex items-center justify-between">
+        <motion.div variants={itemVariants}>
+          <Card className="bg-accent/10 border-accent/20 transition-all duration-300 hover:bg-accent/15">
+            <CardContent className="p-4 flex items-center justify-between">
             <div>
               <p className="text-sm font-medium">Daily Target</p>
               <p className="text-2xl font-bold">{goal.dailyPagesTarget} <span className="text-sm font-normal text-muted-foreground">pages/day</span></p>
@@ -52,12 +73,14 @@ export default function Dashboard() {
               On Track
             </div>
           </CardContent>
-        </Card>
+          </Card>
+        </motion.div>
       )}
 
       {totalPagesRead === 0 && (
-        <Card className="border-dashed bg-muted/50">
-          <CardContent className="flex flex-col items-center justify-center py-12 text-center space-y-4">
+        <motion.div variants={itemVariants}>
+          <Card className="border-dashed bg-muted/50 transition-all duration-300 hover:bg-muted/70">
+            <CardContent className="flex flex-col items-center justify-center py-12 text-center space-y-4">
             <BookOpen className="h-12 w-12 text-muted-foreground opacity-50" />
             <div>
               <h3 className="text-lg font-semibold">Begin your journey</h3>
@@ -71,21 +94,22 @@ export default function Dashboard() {
               </Button>
             </Link>
           </CardContent>
-        </Card>
+          </Card>
+        </motion.div>
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-6">
-          <Card>
+        <motion.div variants={itemVariants} className="space-y-6">
+          <Card className="transition-all duration-300 hover:shadow-md">
             <CardContent className="p-4 md:p-6">
               <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">Reading Activity</h3>
               <ReadingHeatmap data={heatmap} />
             </CardContent>
           </Card>
           <VerseOfTheDay />
-        </div>
+        </motion.div>
         
-        <div className="space-y-4">
+        <motion.div variants={itemVariants} className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Recent Achievements</h3>
             <Link href="/badges" className="text-sm text-primary hover:underline">View all</Link>
@@ -101,9 +125,9 @@ export default function Dashboard() {
               </div>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
 
-    </div>
+    </motion.div>
   );
 }

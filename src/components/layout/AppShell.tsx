@@ -51,7 +51,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <Link 
                 key={item.href} 
                 href={item.href}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors hover:bg-accent/10 ${location === item.href ? 'text-primary bg-accent/15' : 'text-muted-foreground'}`}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-150 [transition-timing-function:var(--ease-out)] hover:bg-accent/10 active:scale-[0.97] ${location === item.href ? 'text-primary bg-accent/15' : 'text-muted-foreground'}`}
               >
                 {item.label}
               </Link>
@@ -104,7 +104,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {/* Mobile Floating Action Button */}
       <button 
         onClick={() => setIsQuickAddOpen(true)}
-        className="md:hidden fixed bottom-20 right-4 z-50 bg-accent text-accent-foreground rounded-full p-4 shadow-lg hover:bg-accent/90 transition-transform active:scale-95"
+        className="md:hidden fixed bottom-20 right-4 z-50 bg-accent text-accent-foreground rounded-full p-4 shadow-lg hover:bg-accent/90 transition-all duration-150 [transition-timing-function:var(--ease-out)] active:scale-[0.97]"
       >
         <Plus className="h-6 w-6" />
       </button>
