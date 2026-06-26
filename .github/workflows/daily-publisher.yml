@@ -1,0 +1,52 @@
+name: Daily Publisher & Health Bot
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at midnight UTC
+  workflow_dispatch: # Allows manual triggering from GitHub UI
+
+jobs:
+  publish_and_heal:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN || github.token }}
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install Dependencies
+        run: npm ci
+        
+      - name: Configure Git
+        run: |
+          git config --global user.name "Netizen Bot"
+          git config --global user.email "bot@netizenlabs.com"
+          
+      - name: Run Daily Publisher
+        run: node scripts/daily-publisher.mjs
+        
+      - name: Run Health Check & Healer
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+        run: node scripts/health-check.mjs
+        
+      - name: Commit and Push (If Passed)
+        # This step only runs if health-check.mjs exits with code 0
+        run: |
+          if [[ -n $(git status -s) ]]; then
+            git commit -m "chore(bot): daily publish and health check passed"
+            git push origin main
+          else
+            echo "No changes to commit."
+          fi
