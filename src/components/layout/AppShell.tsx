@@ -73,14 +73,29 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <main className="flex-1 w-full max-w-6xl mx-auto p-4 md:p-6 lg:p-8">
         {children}
       </main>
-
       {/* Footer */}
       <footer className="hidden md:block border-t bg-background/60">
-        <div className="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between text-xs text-muted-foreground">
+        <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
           <p>Mushaf — a free, private Quran progress tracker.</p>
-          <nav className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3 justify-center md:justify-end">
             <Link href="/about" className="hover:text-foreground transition-colors">About</Link>
-          </nav>
+            <span>•</span>
+            <a href="https://wtkpro.site" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">WebToolkit Pro</a>
+            <span>•</span>
+            <a href="https://tradeconvert.pro" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">TradeConvert</a>
+            <span>•</span>
+            <a href="https://www.severancecalculator.xyz" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Severance Pay</a>
+            <span>•</span>
+            <a href="https://abusufyan.xyz" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Abu Sufyan</a>
+            <span>•</span>
+            <a href="https://netizenlabs.online" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Netizen Labs</a>
+            <span>•</span>
+            <a href="https://getstudynova.online" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">StudyNova</a>
+            <span>•</span>
+            <a href="https://slabreachcalculator.site" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">SLA Breach Calc</a>
+            <span>•</span>
+            <a href="https://taxforfreelancers.online" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Freelance Tax</a>
+          </div>
         </div>
       </footer>
 
